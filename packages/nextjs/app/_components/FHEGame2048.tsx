@@ -197,7 +197,7 @@ export const FHEGame2048 = () => {
   return (
     <div className="min-h-[calc(100vh-100px)] w-full text-purple-100">
       <header className="flex items-center justify-between mb-8">
-        <h1 className="w-full text-center text-4xl font-extrabold text-purple-400 drop-shadow-lg">⚡ FHE 2048</h1>
+        <h1 className="w-full text-center text-4xl font-extrabold text-purple-400 drop-shadow-lg">⚡ FHEVM 2048</h1>
       </header>
 
       <div className="max-w-[900px] mx-auto px-6 py-10">
