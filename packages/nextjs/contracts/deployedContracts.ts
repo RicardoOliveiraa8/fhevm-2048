@@ -6,35 +6,23 @@ import { GenericContractsDeclaration } from "~~/utils/helper/contract";
 
 const deployedContracts = {
   11155111: {
-    FHECounter: {
-      address: "0xead137D42d2E6A6a30166EaEf97deBA1C3D1954e",
+    FHEGame2048: {
+      address: "0x057046a54B46F575711C699a7A439D04247a7b65",
       abi: [
         {
           inputs: [
             {
-              internalType: "externalEuint32",
-              name: "inputEuint32",
-              type: "bytes32",
-            },
-            {
-              internalType: "bytes",
-              name: "inputProof",
-              type: "bytes",
+              internalType: "address",
+              name: "gamer",
+              type: "address",
             },
           ],
-          name: "decrement",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
-        {
-          inputs: [],
-          name: "getCount",
+          name: "fetchCipherScores",
           outputs: [
             {
-              internalType: "euint32",
-              name: "",
-              type: "bytes32",
+              internalType: "euint32[]",
+              name: "scores",
+              type: "bytes32[]",
             },
           ],
           stateMutability: "view",
@@ -43,19 +31,39 @@ const deployedContracts = {
         {
           inputs: [
             {
-              internalType: "externalEuint32",
-              name: "inputEuint32",
-              type: "bytes32",
-            },
-            {
-              internalType: "bytes",
-              name: "inputProof",
-              type: "bytes",
+              internalType: "address",
+              name: "gamer",
+              type: "address",
             },
           ],
-          name: "increment",
-          outputs: [],
-          stateMutability: "nonpayable",
+          name: "getRunCount",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "totalRuns",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "gamer",
+              type: "address",
+            },
+          ],
+          name: "hasEncryptedData",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "hasData",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
           type: "function",
         },
         {
@@ -69,6 +77,121 @@ const deployedContracts = {
             },
           ],
           stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "externalEuint32",
+              name: "cipherScore",
+              type: "bytes32",
+            },
+            {
+              internalType: "bytes",
+              name: "zkProof",
+              type: "bytes",
+            },
+          ],
+          name: "recordEncryptedRun",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+      deployedOnBlock: 9368216,
+    },
+  },
+  31337: {
+    FHEGame2048: {
+      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      abi: [
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "gamer",
+              type: "address",
+            },
+          ],
+          name: "fetchCipherScores",
+          outputs: [
+            {
+              internalType: "euint32[]",
+              name: "scores",
+              type: "bytes32[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "gamer",
+              type: "address",
+            },
+          ],
+          name: "getRunCount",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "totalRuns",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "gamer",
+              type: "address",
+            },
+          ],
+          name: "hasEncryptedData",
+          outputs: [
+            {
+              internalType: "bool",
+              name: "hasData",
+              type: "bool",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "protocolId",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "externalEuint32",
+              name: "cipherScore",
+              type: "bytes32",
+            },
+            {
+              internalType: "bytes",
+              name: "zkProof",
+              type: "bytes",
+            },
+          ],
+          name: "recordEncryptedRun",
+          outputs: [],
+          stateMutability: "nonpayable",
           type: "function",
         },
       ],
