@@ -5,7 +5,7 @@ import "~~/styles/globals.css";
 import { getMetadata } from "~~/utils/helper/getMetadata";
 
 export const metadata = getMetadata({
-  title: "FHE 2048",
+  title: "FHEVM 2048",
   description: "Built with FHEVM",
 });
 

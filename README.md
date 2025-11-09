@@ -1,6 +1,43 @@
-# FHEVM React Template
+# 🎮 FHEVM 2048 React dApp
 
-A minimal React frontend template for building FHEVM-enabled decentralized applications (dApps). This template provides a simple development interface for interacting with FHEVM smart contracts, specifically the `FHECounter.sol` contract.
+A React frontend for a Fully Homomorphic Encryption (FHE)-enabled 2048 game.  
+This dApp allows players to play 2048, submit encrypted scores on-chain, and securely decrypt their leaderboard results.
+
+---
+
+## ✨ Features
+
+- 🟪 React + TypeScript setup
+- 🔒 FHE-based encrypted score submission
+- 💼 Wallet integration with RainbowKit & Wagmi
+- 🎨 Animated and responsive 2048 board
+- 📊 Decrypted leaderboard view per player
+- 🌐 Fully client-side, scores encrypted before submission
+- ⏳ Game state preserved between moves until restart
+
+---
+
+## 🕹️ How to Play
+
+**Objective:**  
+Reach the **highest possible tile** on a 4×4 board by combining tiles with the same number. The game ends when no moves are possible (board is full and no adjacent tiles can merge).  
+
+**Basic Rules:**  
+1. Each move slides **all tiles** on the board in the chosen direction: `up`, `down`, `left`, or `right`.  
+2. When two tiles of the same number collide, they **merge into one tile** with the sum of their values.  
+3. Every move adds a **new random tile** (2 or 4) to an empty cell.  
+4. The **score increases** by the value of merged tiles.  
+
+**Game Flow in This dApp:**  
+- Press **Start** to initialize the board and begin playing.  
+- Use **arrow keys** to slide tiles.  
+- Merged tiles immediately update your **score**.  
+- If the board is full and no moves are possible, **Game Over** appears with your final score.  
+- If you create a tile with **2048 or higher**, a **Victory** message appears with a blinking effect.  
+- After the game ends, you can **encrypt and submit your score on-chain**.  
+- Use **Restart** to start a new game anytime.
+
+---
 
 ## 🚀 What is FHEVM?
 
@@ -31,7 +68,7 @@ Before you begin, ensure you have:
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd fhevm-react-template
+cd fhevm-2048
 
 # Initialize submodules (includes fhevm-hardhat-template)
 git submodule update --init --recursive
@@ -124,7 +161,7 @@ For more details, see the [MetaMask development guide](https://docs.metamask.io/
 This template uses a monorepo structure with three main packages:
 
 ```
-fhevm-react-template/
+fhevm-2048/
 ├── packages/
 │   ├── fhevm-hardhat-template/    # Smart contracts & deployment
 │   ├── fhevm-sdk/                 # FHEVM SDK package
@@ -134,8 +171,8 @@ fhevm-react-template/
 
 ### Key Components
 
-#### 🔗 FHEVM Integration (`packages/nextjs/hooks/fhecounter-example/`)
-- **`useFHECounterWagmi.tsx`**: Example hook demonstrating FHEVM contract interaction
+#### 🔗 FHEVM Integration (`packages/nextjs/hooks`)
+- **`useFHEGame2048.tsx`**: Example hook demonstrating FHEVM contract interaction
 - Essential hooks for FHEVM-enabled smart contract communication
 - Easily copyable to any FHEVM + React project
 
