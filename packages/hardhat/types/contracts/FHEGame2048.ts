@@ -23,13 +23,17 @@ import type {
 export interface FHEGame2048Interface extends Interface {
   getFunction(
     nameOrSignature:
+      | "confidentialProtocolId"
       | "fetchCipherScores"
       | "getRunCount"
       | "hasEncryptedData"
-      | "protocolId"
       | "recordEncryptedRun"
   ): FunctionFragment;
 
+  encodeFunctionData(
+    functionFragment: "confidentialProtocolId",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "fetchCipherScores",
     values: [AddressLike]
@@ -41,10 +45,6 @@ export interface FHEGame2048Interface extends Interface {
   encodeFunctionData(
     functionFragment: "hasEncryptedData",
     values: [AddressLike]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "protocolId",
-    values?: undefined
   ): string;
   encodeFunctionData(
     functionFragment: "recordEncryptedRun",
@@ -52,6 +52,10 @@ export interface FHEGame2048Interface extends Interface {
   ): string;
 
   decodeFunctionResult(
+    functionFragment: "confidentialProtocolId",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "fetchCipherScores",
     data: BytesLike
   ): Result;
@@ -63,7 +67,6 @@ export interface FHEGame2048Interface extends Interface {
     functionFragment: "hasEncryptedData",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "protocolId", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "recordEncryptedRun",
     data: BytesLike
@@ -113,6 +116,8 @@ export interface FHEGame2048 extends BaseContract {
     event?: TCEvent
   ): Promise<this>;
 
+  confidentialProtocolId: TypedContractMethod<[], [bigint], "view">;
+
   fetchCipherScores: TypedContractMethod<
     [gamer: AddressLike],
     [string[]],
@@ -127,8 +132,6 @@ export interface FHEGame2048 extends BaseContract {
     "view"
   >;
 
-  protocolId: TypedContractMethod<[], [bigint], "view">;
-
   recordEncryptedRun: TypedContractMethod<
     [cipherScore: BytesLike, zkProof: BytesLike],
     [void],
@@ -140,6 +143,9 @@ export interface FHEGame2048 extends BaseContract {
   ): T;
 
   getFunction(
+    nameOrSignature: "confidentialProtocolId"
+  ): TypedContractMethod<[], [bigint], "view">;
+  getFunction(
     nameOrSignature: "fetchCipherScores"
   ): TypedContractMethod<[gamer: AddressLike], [string[]], "view">;
   getFunction(
@@ -148,9 +154,6 @@ export interface FHEGame2048 extends BaseContract {
   getFunction(
     nameOrSignature: "hasEncryptedData"
   ): TypedContractMethod<[gamer: AddressLike], [boolean], "view">;
-  getFunction(
-    nameOrSignature: "protocolId"
-  ): TypedContractMethod<[], [bigint], "view">;
   getFunction(
     nameOrSignature: "recordEncryptedRun"
   ): TypedContractMethod<

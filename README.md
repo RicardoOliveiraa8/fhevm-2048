@@ -1,4 +1,4 @@
-# 🎮 FHEVM 2048 React dApp
+# 🎮 FHEVM 2048
 
 A React frontend for a Fully Homomorphic Encryption (FHE)-enabled 2048 game.  
 This dApp allows players to play 2048, submit encrypted scores on-chain, and securely decrypt their leaderboard results.

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import {FHE, euint32, externalEuint32} from "@fhevm/solidity/lib/FHE.sol";
-import {SepoliaConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
+import {ZamaEthereumConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
 
 /**
  * @title FHEGame2048
@@ -15,7 +15,7 @@ import {SepoliaConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
  *      - The score is encrypted off-chain and submitted with a valid proof.
  *      - Only the player who submitted can later decrypt and view their results.
  */
-contract FHEGame2048 is SepoliaConfig {
+contract FHEGame2048 is ZamaEthereumConfig {
     /// @dev Stores all encrypted scores per player.
     mapping(address => euint32[]) private _playerCipherScores;
 
